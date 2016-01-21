@@ -12,7 +12,7 @@ angular.module('7minWorkout')
 // $injection annotation:
 // WorkoutController['$inject']  =  ['$scope'];
 // inline dependancy injection to resolve.
-.controller('WorkoutController',['$scope', function($scope) {
+.controller('WorkoutController',['$scope', '$interval', function($scope) {
   // add models: WorkoutPlan and Exercise
   function Exercise(args) {
     // Showing relivent excerise information/data
@@ -36,6 +36,20 @@ function WorkoutPlan(args) {
 
 var restExercise;
 var workoutPlan;
+
+var startExercise = function(exercisePlan) {
+  $scope.currentExercise = exercisePlan;
+  $scope.currentExerciseDuration = 0;
+  // track progress of the current excerise using the interval service.
+  // $interval is a wrapper over window.setInterval.
+  $interval (function() {
+    // increment every second.
+    ++$scope.currentExerciseDuration;
+    // every one second.
+  }, 1000
+    // for the amount of time of that duration.
+   , $scope.currentExercise.duration);
+ };
 
 var createWorkout = function() {
   // instanciate new Workout Object.
