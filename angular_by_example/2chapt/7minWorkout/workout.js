@@ -251,6 +251,21 @@ angular.module('7minWorkout')
      return workout;
    }
 
+   var getNextExercise = function(currentExercisePlan) {
+     var nextExercise = null;
+     // if it;s restExercise, set to following exercise
+     if(currentExercisePlan === restExercise) {
+       // will use shift method to assign nextExercise.
+       nextExercise = workoutPlan.exercise.shift();
+     } else {
+       if(workoutPlan.exercises.length != 0) {
+         nextExercise = restExercise;
+       }
+     }
+
+     return nextExercise;
+   }
+
 
 // declare init function.
 var init = function() {
