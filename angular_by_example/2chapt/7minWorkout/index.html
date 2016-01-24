@@ -20,6 +20,7 @@
   <!-- START NAVBAR -->
     <div class="navbar navbar-default navbar-fixed-top top-navbar">
         <div class="container app-container">
+          <div ng-view></div>
             <div class="navbar-header">
                 <h1>7 Minute Workout</h1>
             </div>
@@ -36,7 +37,7 @@
                 aria-valuenow="0" aria-valuemin="0" aria-valuemax= "{{currentExercise.duration}}" ng-style="{'width' :(currentExerciseDuration/currentExercise.duration) * 100 + '%'}">
                 </div>
               </div>
-    
+
     ￼￼      </div>
         </div>
       </div>
