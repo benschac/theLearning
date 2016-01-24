@@ -68,7 +68,18 @@ angular.module('7minWorkout')
       // every one second.
     }, 1000
       // for the amount of time of that duration.
-     , $scope.currentExercise.duration);
+     , $scope.currentExercise.duration)
+     // $interval returns a Promise, we can use Angular's Promise library,
+     // to check future values and increment workouts.
+     .then(function() {
+       var next = getNextExercise(exercisePlan);
+
+       if(next) {
+         startExercise(next);
+       } else {
+         console.console.log("Workout Complete!");
+       }
+     })
    };
 
    var createWorkout = function() {
@@ -255,10 +266,10 @@ angular.module('7minWorkout')
 
    var getNextExercise = function(currentExercisePlan) {
      var nextExercise = null;
-     // if it;s restExercise, set to following exercise
+     // if it's restExercise, set to following exercise
      if(currentExercisePlan === restExercise) {
        // will use shift method to assign nextExercise.
-       nextExercise = workoutPlan.exercise.shift();
+       nextExercise = workoutPlan.exercises.shift();
      } else {
        //if not check that there aren't anymore exercises.
        if(workoutPlan.exercises.length != 0) {
@@ -270,6 +281,21 @@ angular.module('7minWorkout')
 
      return nextExercise;
    }
+
+
+   // Using Promise in startExercise function to exicute watch.
+  //  $scope.$watch('currentExerciseDuration', function(nVal) {
+  //    // if true, get the next Excercise.
+  //    if(nVal == $scope.currentExercise.duration) {
+  //      var next = getNextExercise($scope.currentExercise);
+  //      // if there are still workouts in the array.
+  //      if(next) {
+  //        startExercise(next);
+  //      } else {
+  //        console.log("Work out complete");
+  //      }
+  //    }
+  //  });
 
 
 // declare init function.
