@@ -1,3 +1,5 @@
+'use strict';
+
 /*
 Required Features:
 1. Start workout
@@ -258,7 +260,10 @@ angular.module('7minWorkout')
        // will use shift method to assign nextExercise.
        nextExercise = workoutPlan.exercise.shift();
      } else {
+       //if not check that there aren't anymore exercises.
        if(workoutPlan.exercises.length != 0) {
+         // set the next to rest so that theres an even cycle of
+         // rest exercise and rest exercise.
          nextExercise = restExercise;
        }
      }
