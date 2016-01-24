@@ -77,7 +77,7 @@ angular.module('7minWorkout')
        if(next) {
          startExercise(next);
        } else {
-         console.console.log("Workout Complete!");
+         console.log("Workout Complete!");
        }
      })
    };
