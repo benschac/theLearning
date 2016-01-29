@@ -14,7 +14,7 @@ angular.module('7minWorkout')
 // $injection annotation:
 // WorkoutController['$inject']  =  ['$scope'];
 // inline dependancy injection to resolve.
-.controller('WorkoutController',['$scope', '$interval', function($scope, $interval) {
+.controller('WorkoutController',['$scope', '$interval', '$location', function($scope, $interval) {
   // add models: WorkoutPlan and Exercise
   function WorkoutPlan(args) {
     // list of exercises in the workout, name of workout, title, rest cycle.
@@ -77,7 +77,15 @@ angular.module('7minWorkout')
        if(next) {
          startExercise(next);
        } else {
-         console.log("Workout Complete!");
+         // using the $location service.
+         /*
+            from ng-docs
+            The $location service parses the URL in the browser address bar
+            (based on the window.location) and makes the URL available to your application.
+            Changes to the URL in the address bar are reflected into $location service and
+            changes to $location are reflected into the browser address bar.
+         */
+         $location.path('/finish');
        }
      })
    };
