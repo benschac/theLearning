@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guess The Number!</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body ng-app="app">
+    <div ng-controller="GuessTheNumberController" class="container">
+      <h2>Guess that number!</h2>
+      <p class="well lead">
+        Guess the computer generated random number, Please (1-1000).
+      </p>
+      <!-- Insert guess into model directive -->
+      <label for="">Your Guess</label><input ng-model="guess" type="number">
+      <p> {{ guess }}</p>
+      <!-- Use invoke verifyGuess function and set guess -->
+      <button ng-click="verifyGuess()" class="btn btn-primary btn-sm">Verify</button>
+      <!-- Check for deviation -->
+      <button ng-click="initializeGame()" class="btn btn-warning btn-sm">Restart</button>
+      <!-- Check deviation and alert user. -->
+      <p>
+        <p ng-show="deviation<0" class="alert alert-warning">Your guess is higher</p>
+        <p ng-show="deviation>0" class="alert alert-warning">Your Guess is lower</p>
+        <p ng-show="deviation===0" class="alert alert-success">Your Guess is correct</p>
+        <p ng-if="tryCount===0 && initializeGame()" class="alert alert-success">You loose</p>
+
+      </p>
+      <p class="text-info">No of guesses: <span class="badge">{{ noOfTries }}</span></p>
+      <p class="text-info">No of trys left: <span class="badge">{{ tryCount }}</span></p>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.js"></script>
+    <script type="text/javascript">
+    // register angular module && set controller to it.
+    angular.module('app', [])
+    .controller('GuessTheNumberController', GuessTheNumberController);
+
+    // wrapping function with scope bound to it.
+      function GuessTheNumberController($scope) {
+        // function bound to scope which sets deviation on user input.
+        // increments number of tries.
+        $scope.verifyGuess = function() {
+          // dont need to check for equality because if deviation is zero,
+          // then the number matches.
+          // note, has access to the original because it's bound to scope.
+          $scope.deviation = $scope.original - $scope.guess;
+          $scope.tryCount = $scope.tryCount - 1;
+          $scope.noOfTries = $scope.noOfTries + 1;
+        }
+
+        // default constants to start the game off with.
+        $scope.initializeGame = function() {
+          $scope.noOfTries = 0;
+          $scope.original = Math.floor((Math.random() * 1000) + 1);
+          $scope.guess = null;
+          $scope.deviation = null;
+          $scope.tryCount = 5;
+        }
+        // invoke game to start on load.
+        $scope.initializeGame();
+      }
+
+
+    </script>
+  </body>
+</html>
