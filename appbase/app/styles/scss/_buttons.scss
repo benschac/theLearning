@@ -1,0 +1,23 @@
+.button {
+	border-radius: 3px;
+	border: 1px solid $linkedin-blue;
+	color: $linkedin-blue;
+	background-color: $white;
+	font-family: $base-font;
+	background-origin: padding-box;
+
+	&:hover {
+		background-color: $linkedin-blue;
+		color: $white;
+	}
+}
+
+.button__follow {
+	font-size: 12px;
+	padding: 0 15px;
+	margin: 0 1px;
+	text-align: center;
+	height: 26px;
+	line-height: 26px;
+}
+

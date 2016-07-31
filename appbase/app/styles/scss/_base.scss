@@ -1,0 +1,14 @@
+* {
+	box-sizing: border-box;
+	box-reflection: below 1px $background-color;
+}
+
+body {
+	background-color: $background-color;
+	height: 100%;
+}
+
+.container {
+	width: 960px;
+	margin: 0 auto;
+}

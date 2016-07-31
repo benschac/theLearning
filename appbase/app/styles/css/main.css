@@ -1,0 +1,89 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, button, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  box-sizing: border-box;
+  box-reflection: below 1px #e7e9ec; }
+
+body {
+  background-color: #e7e9ec;
+  height: 100%; }
+
+.container {
+  width: 960px;
+  margin: 0 auto; }
+
+.nav-main {
+  background-color: #000;
+  height: 50px; }
+
+.nav-main__logo {
+  width: 44px;
+  height: 36px;
+  color: #fff;
+  float: left;
+  position: absolute;
+  background: url("https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_in_nav_44x36.png") no-repeat; }
+
+.button {
+  border-radius: 3px;
+  border: 1px solid #008cc9;
+  color: #008cc9;
+  background-color: #fff;
+  font-family: "Helvetica", "Ariel";
+  background-origin: padding-box; }
+  .button:hover {
+    background-color: #008cc9;
+    color: #fff; }
+
+.button__follow {
+  font-size: 12px;
+  padding: 0 15px;
+  margin: 0 1px;
+  text-align: center;
+  height: 26px;
+  line-height: 26px; }

@@ -1,0 +1,13 @@
+.nav-main {
+	background-color: #000;
+	height: 50px;
+}
+
+.nav-main__logo {
+	width: 44px;
+	height: 36px;
+	color: $white;
+	float: left;
+	position: absolute;
+	background: url('https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_in_nav_44x36.png') no-repeat;
+}
