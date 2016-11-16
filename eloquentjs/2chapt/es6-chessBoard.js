@@ -4,6 +4,8 @@
 
 
 
+
+// Non-Functional
 let chessBoard = (type1 = " ", type2 = "#", size = 8) => {
   let board = "";
 
@@ -20,5 +22,19 @@ let chessBoard = (type1 = " ", type2 = "#", size = 8) => {
   console.log(board);
 }
 
+
+chessBoard();
+
+
+// Functional  credit: hsubox
+let chessBoard = (type1 = " ", type2 = "#", size = 8) => {
+  let dimension = [...Array(8).keys()];
+  let board = dimension.map(x => {
+    return dimension.map(y => {
+      return ( (x + y) % 2 === 0 ) ? type1 : type2;
+    }).join("");
+  }).join("\n");
+  console.log(board);
+}
 
 chessBoard();
