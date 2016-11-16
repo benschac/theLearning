@@ -20,3 +20,17 @@ let loopTriangle = (size = 7, type = '#') => {
 
 
 loopTriangle();
+
+
+// Functional credit: hsubox
+let loopTriangle = (size = 7, type = '#') => {
+  let dimension = [...Array(size).keys()];
+  let triangle = dimension.map(x => {
+    return dimension.map(y => {
+      return ( x - y + 1 > 0 ) ? type : null;
+    }).join("");
+  }).join("\n");
+  console.log(triangle);
+}
+
+loopTriangle();
