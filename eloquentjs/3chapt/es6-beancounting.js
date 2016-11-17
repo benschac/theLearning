@@ -3,9 +3,7 @@
 let countChar = (string, char) => {
   let stringArr = [...string];
 
-  return stringArr.filter(x => {
-    return x === char;
-  }).length;
+  return stringArr.filter(x => x === char).length;
 };
 
 
