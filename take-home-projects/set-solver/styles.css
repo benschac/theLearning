@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 10px;
+
+}
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+.logo {
+  text-align: center;
+}
+
+.container {
+  display: block;
+  position: relative;
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.card-container {
+
+}
+
+.card {
+  font-size: 16px;
+  border-radius: 4px;
+  width: calc(33.333% - 5px);
+  height: 300px
+  border: 1px solid black;
+  float: left;
+}
+
+.card p {
+  text-align: center;
+}
