@@ -9,7 +9,22 @@
        font-style: normal;
 }
 
+
+@font-face {
+  font-family: 'airstream';
+  src: url('../fonts/Airstream-webfont.eot');
+  src: url('../fonts/Airstream-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Airstream-webfont.woff') format('woff'),
+       url('../fonts/Airstream-webfont.ttf') format('truetype'),
+       url('../fonts/Airstream-webfont.svg#airstream') format('svg');
+       font-weight: normal;
+       font-style: normal;
+}
+
+
 html, body {
+  /*Fill content through out the
+  device window */
   height: 100%;
 }
 
@@ -85,6 +100,18 @@ a {
 }
 .detail-image-frame {
   text-align: center;
+  position: relative;
+}
+
+.detail-image-title {
+  font-family: airstream;
+  position: absolute;
+  bottom: -16px;
+  left: 4px;
+
+  color: white;
+  font-size: 40px;
+  text-shadow: rgba(0, 0, 0, 0.9) 1px 2px 9px;
 }
 
 .thumbnail-item {
