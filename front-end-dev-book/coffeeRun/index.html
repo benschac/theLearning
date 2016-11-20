@@ -45,9 +45,18 @@
                 <div class="form-group">
                   <label for="flavorShot">Flavor Shot</label>
                   <select id="flavorShot" class="form-control" name="flavor">
-
+                    <option value="">None</option>
+                    <option value="caramel">caramel</option>
+                    <option value="almond">almond</option>
+                    <option value="mocha">mocha</option>
                   </select>
                 </div>
+                <div class="form-group">
+                  <label for="strengthLevel">Caffeine Rating</label>
+                  <input type="range" name="strength" value="30">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="reset" class="btn btn-default">Reset</button>
                 </form>
               </div>
           </div>
