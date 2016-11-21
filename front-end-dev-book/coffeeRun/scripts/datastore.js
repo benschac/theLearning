@@ -31,6 +31,3 @@
   window.App = App;
 
 })(window);
-
-
-console.log('hey');
