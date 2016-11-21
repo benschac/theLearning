@@ -17,12 +17,12 @@
             <form data-coffee-order="form">
                 <div class="form-group">
                   <label for="coffeeOrder">Coffee Order</label>
-                  <input class="form-control" id="coffeeOrder" name="coffee" autofocus>
+                  <input class="form-control" id="coffeeOrder" name="coffee" autofocus required pattern="[a-zA-Z\s]+">
                 </div>
                 <!-- Email Form -->
                 <div class="form-group">
                   <label for="emailInput">Email</label> <br>
-                  <input class="form-control" placeholder="barack@obama.com" type="email" id="emailInput" name="emailAddress" autofocus>
+                  <input class="form-control" placeholder="barack@obama.com" type="email" id="emailInput" name="emailAddress" autofocus required>
                 </div>
                 <div class="radio">
                   <label>
@@ -71,6 +71,7 @@
       </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="scripts/validation.js" charset="utf-8"></script>
     <script src="scripts/checklist.js" charset="utf-8"></script>
     <script src="scripts/formhandler.js" charset="uft-8"></script>
     <script src="scripts/datastore.js" charset="uft-8"></script>

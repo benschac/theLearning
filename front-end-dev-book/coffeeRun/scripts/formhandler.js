@@ -4,6 +4,7 @@
   var $ = window.jQuery;
 
 
+
   function FormHandler(selector) {
     if(!selector){
       throw new Error('No selector provided');
@@ -39,6 +40,14 @@
       this.elements[0].focus();
     })
 
+  }
+
+  FormHandler.prototype.addInputHandler = function(fn) {
+    console.log('Setting input handler for form');
+    this.$formElement.on('input', '[name="emailAddress"]', function(event) {
+      var emailAddress = event.target.value;
+      console.log(fn(emailAddress));
+    });
   }
 
   App.FormHandler = FormHandler;
