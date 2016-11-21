@@ -25,13 +25,16 @@
       event.preventDefault();
 
       var data = {};
+      // Iterate through form element objects.
       $(this).serializeArray().forEach(function(item) {
         data[item.name] = item.value;
         console.log(item.name + ' is ' + item.value);
       });
 
       console.log(data);
+      // Envoke data in callback function.
       fn(data);
+      // clear form elements.
       this.reset();
       this.elements[0].focus();
     })
