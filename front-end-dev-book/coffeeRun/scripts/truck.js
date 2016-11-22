@@ -10,13 +10,13 @@ function Truck(truckId, db) {
 
 Truck.prototype.createOrder = function(order) {
   console.log(order.emailAddress, order);
-  this.db.add(order.emailAddress, order);
+  return this.db.add(order.emailAddress, order);
 }
 
 Truck.prototype.deliverOrder = function(customerId) {
   console.log('removed ' + customerId);
   console.log('in deliver order:', this);
-  this.db.delete(customerId);
+  return this.db.delete(customerId);
 }
 
 Truck.prototype.printOrders = function() {
