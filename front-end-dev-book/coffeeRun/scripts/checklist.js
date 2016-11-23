@@ -36,10 +36,12 @@
     */
     this.$element.on('click', 'input', function(event) {
       var email = event.target.value;
-      // Remove the row
-      this.removeRow(email);
+
       // pass email to the callback.
-      fn(email);
+      fn(email).then(function() {
+        // Remove the row
+        this.removeRow(email);
+      }.bind(this));
       // Setting context of 'this' to this.$element.on and not
       // the anonymous function's this.
     }.bind(this));

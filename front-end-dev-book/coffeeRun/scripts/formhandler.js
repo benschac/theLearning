@@ -34,10 +34,12 @@
 
       console.log(data);
       // Envoke data in callback function.
-      fn(data);
-      // clear form elements.
-      this.reset();
-      this.elements[0].focus();
+      fn(data)
+      .then(function() {
+        // clear form elements.
+        this.reset();
+        this.elements[0].focus();
+      }.bind(this))
     })
 
   }

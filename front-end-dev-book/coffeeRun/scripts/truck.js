@@ -19,15 +19,22 @@ Truck.prototype.deliverOrder = function(customerId) {
   return this.db.delete(customerId);
 }
 
-Truck.prototype.printOrders = function() {
-  var customerIdArray = Object.keys(this.db.getAll());
-  console.log('before forEach this:', this);
-  customerIdArray.forEach(id => {
-    console.log('in forEach this: ', this);
-    console.log(this.db.get(id));
-    // Referse to Truck.prototype instead of
-    // callback's this.
-  });
+Truck.prototype.printOrders = function(printFn) {
+
+  return this.db.getAll()
+    .then(function(orders) {
+      var customerIdArray = Object.keys(orders);
+      console.log('before forEach this:', this);
+      customerIdArray.forEach(id => {
+      // console.log('in forEach this: ', this);
+        console.log(orders[id]);
+        if(printFn) {
+          printFn(orders[id]);
+        }
+        // Referse to Truck.prototype instead of
+        // callback's this.
+    });
+  }.bind(this));
 
 
 // Alternative implementation.
