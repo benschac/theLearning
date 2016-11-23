@@ -5,7 +5,7 @@
 
   RemoteDataStore.prototype.add = function(key, val) {
     console.log(this.serverUrl);
-    $.post(this.serverUrl, val, function(response) {
+    return $.post(this.serverUrl, val, function(response) {
       console.log(response);
     });
   }
