@@ -5,30 +5,35 @@
 
   RemoteDataStore.prototype.add = function(key, val) {
     console.log(this.serverUrl);
-    $.post(this.serverUrl, val, function(response) {
+    return $.post(this.serverUrl, val, function(response) {
       console.log(response);
     });
   }
 
   RemoteDataStore.prototype.delete = function(key) {
-    $.ajax(this.serverUrl + '/' + key, {
+    return $.ajax(this.serverUrl + '/' + key, {
       type: 'DELETE'
     });
   }
 
   RemoteDataStore.prototype.get = function(key, cb) {
-    $.get(this.serverUrl + '/' + key, function(response) {
+    return $.get(this.serverUrl + '/' + key, function(response) {
+      if(cb) {
+        console.log(response);
+        cb(response);
+      }
       console.log(response);
-      cb(response);
     });
   }
 
 
   RemoteDataStore.prototype.getAll = function(cb) {
-    $.get(this.serverUrl, function(response) {
-
+    return $.get(this.serverUrl, function(response) {
+      if(cb) {
+        console.log(response);
+        cb(response);
+      }
       // console.log(response);
-      cb(response);
     });
   }
 

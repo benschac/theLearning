@@ -12,7 +12,8 @@
   const Validation = App.Validation;
   const CheckList = App.CheckList;
   const remoteDS = new RemoteDataStore(SERVER_URL);
-  const truck = new Truck('ncc-1701', remoteDS);
+  // Can also take remoteDS as a param to store Data.
+  const truck = new Truck('ncc-1701', new DataStore());
 
   window.truck = truck;
   var checkList = new CheckList(CHECKLIST_SELECTOR);
@@ -22,10 +23,17 @@
   formHandler.addSubmitHandler(function(data) {
     // envoke both truck and checklist methods on
     // submit.  Pass instance to change with data.
-    truck.createOrder.call(truck, data);
-    checkList.addRow.call(checkList, data);
+    return truck.createOrder.call(truck, data)
+    .then(function() {
+      checkList.addRow.call(checkList, data);
+    },
+    function() {
+      alert('Server unreachable.  Try again later.');
+    });
+
   });
 
   formHandler.addInputHandler(Validation.isCompanyEmail);
+  truck.printOrders(checkList.addRow.bind(checkList));
 
 })(window);
