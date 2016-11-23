@@ -9,6 +9,7 @@ let extractPath = (url) => {
     // change to just name w.o the /
     fileName.substring(1);
   }
+  
   console.log('The fileName is: ' + fileName);
 
 
