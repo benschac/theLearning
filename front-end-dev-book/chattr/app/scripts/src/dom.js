@@ -1,12 +1,8 @@
 import $ from 'jquery';
-import {ChatForm} from './dom';
 
-const FORM_SELECTOR = '[data-chat="chat-form"]';
-const INPUT_SELECTOR = '[data-chat="message-input"]';
 
 export class ChatForm {
   constructor(formSel, inputSel) {
-    this.chatForm = new ChatForm(FORM_SELECTOR, INPUT_SELECTOR);
     this.$form = $(formSel);
     this.$input = $(inputSel);
   }
@@ -22,6 +18,52 @@ export class ChatForm {
     });
 
     // register eventhandler to envoke submit method when submit button is clicked.
-    this.$form.find('button').on('click', () => this.form.submit());
+    this.$form.find('button').on('click', () => this.$form.submit());
+  }
+}
+
+export class ChatList {
+  constructor(listSel, username) {
+    this.$list = $(listSel);
+    this.$username = $(username);
+  }
+
+  drawMessage({user: u, timestamp: t, message: m}) {
+    let $messageRow = $('<li>', {
+      'class': 'message-row'
+    });
+    // adds class to style you messages uniquely.
+    if(this.username === u) {
+      $messageRow.addClass('me');
+    }
+
+    // create jquery message obj.
+    let $message = $('<p>');
+
+    // append span for meta username data.
+    $message.append($('<span>', {
+      'class': 'message-username',
+      text: u
+    }));
+
+    // append span for time meta data.
+    $message.append($('<span>', {
+      'class': 'timestamp',
+      'data-time': t,
+      text: (new Date(t)).getTime()
+    }));
+
+    // append span for message.
+    $message.append($('<span>', {
+      'class': 'message-message',
+      text: m
+    }));
+
+    // add message to row.
+    $messageRow.append($message);
+    // append row to list.
+    $(this.listId).append($messageRow);
+    // scrolls to newest message.
+    $messageRow.get(0).scrollIntoView();
   }
 }
