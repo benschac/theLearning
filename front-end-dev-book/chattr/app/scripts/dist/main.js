@@ -1,1 +1,1 @@
-console.error("SyntaxError: /Users/benjaminschachter/educations/front-end-dev-book/chattr/app/scripts/src/app.js: Unexpected token, expected , (19:26) while parsing file: /Users/benjaminschachter/educations/front-end-dev-book/chattr/app/scripts/src/app.js");
+console.error("SyntaxError: /Users/benjaminschachter/educations/front-end-dev-book/chattr/app/scripts/src/app.js: Unexpected token, expected ( (32:6) while parsing file: /Users/benjaminschachter/educations/front-end-dev-book/chattr/app/scripts/src/app.js");
