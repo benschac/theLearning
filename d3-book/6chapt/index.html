@@ -1,53 +1,116 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>D3 Page Template</title>
-    <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
-  </head>
-  <body>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: SVG bar chart with value labels (centered)</title>
+		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			//Width and height
+			var w = 500;
+			var h = 100;
+			var barPadding = 1;
+
+			var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
+							11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+
+    var datasetScatter = [
+                [5, 20], [480, 90], [250, 50], [100, 33], [330, 95],
+                [410, 12], [475, 44], [25, 67], [85, 21], [220, 88]
+              ];
+
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			svg.selectAll("rect")
+			   .data(dataset)
+			   .enter()
+			   .append("rect")
+			   .attr("x", function(d, i) {
+			   		return i * (w / dataset.length);
+			   })
+			   .attr("y", function(d) {
+			   		return h - (d * 4);
+			   })
+			   .attr("width", w / dataset.length - barPadding)
+			   .attr("height", function(d) {
+			   		return d * 4;
+			   })
+			   .attr("fill", function(d) {
+					return "rgb(0, 0, " + (d * 10) + ")";
+			   });
+
+			svg.selectAll("text")
+			   .data(dataset)
+			   .enter()
+			   .append("text")
+			   .text(function(d) {
+			   		return d;
+			   })
+         .attr({
+           "text-anchor": "middle",
+           "x": function(d, i) {
+  			   		return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
+  			   },
+           "y": function(d) {
+            return h - (d * 4) + 14;
+           },
+           "font-family": "sans-serif",
+           "font-size": "11px",
+           "fill": "white"
+         });
 
 
+    var circleSvg = d3.select("body")
+                      .append("svg")
+                      .attr({
+                        "width": w,
+                        "height": h
+                      });
+    var circle = circleSvg.selectAll('circle')
+                .data(datasetScatter)
+                .enter()
+                .append('circle')
+                .attr({
+                  "cx": function(d) {
+                    return d[0];
+                  },
+                  "cy": function(d) {
+                    return d[1]
+                  },
+                  "r": function(d) {
+                    return Math.sqrt(h - d[1]);
+                  }
+                });
+
+        circleSvg.selectAll("text")
+              .data(datasetScatter)
+              .enter()
+              .append("text")
+              .text(function(d) {
+          return d[0] + "-" + d[1];
+        })
+        .attr({
+          "x" : function(d) {
+            return d[0];
+          },
+          "y" : function(d) {
+            return d[1];
+          },
+          "font-family" : "sans-serif",
+          "font-size" : "11px",
+          "fill" : "red"
+        });
 
 
-
-
-    <script type="text/javascript">
-    // Use D3 obj, select first DOM element, append to DOM element, add text to
-    // appended element.
-    // Chained example
-    // var dataset;
-    // d3.select("body").append("p")
-    // .text('New Paragraph Chained').append('br');
-
-
-    // var body = d3.select("body");
-    // var p = body.append("p");
-    // p.text('Variable Paragraph Chaining')
-
-    var dataset = [5, 10, 15, 20, 25];
-    d3.csv("food.csv", function(err, data) {
-      // dataset = data;
-
-      if(err) console.log(err);
-      // save to the global scope.
-
-      // empty selection since no paragraphs exist yet.
-      d3.select("body").selectAll("p")
-      // parses data values (5 values in dataset)
-      .data(dataset)
-      // enter:  data values > DOM elements. Creates new placeholder element.
-      .enter()
-      // appends p to DOM with new placeholder element from enter.
-      .append("p")
-      .text(function(d) {
-        return d;
-      });
-
-    });
-
-
-
-    </script>
-  </body>
+		</script>
+	</body>
 </html>
