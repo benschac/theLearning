@@ -12,11 +12,13 @@
 		<script type="text/javascript">
 		// var dataset = [ 100, 200, 300, 400, 500 ];
 		var w = 500;
-		var h = 100;
+		var h = 300;
 		var dataset = [
                 [5, 20], [480, 90], [250, 50], [100, 33], [330, 95],
                 [410, 12], [475, 44], [25, 67], [85, 21], [220, 88]
               ];
+		var padding = 20;
+
 
 		// scale linear scale of svg based on values.
 		var xScale = d3.scale.linear()
@@ -24,19 +26,24 @@
 									 .domain([0, d3.max(dataset, function(d) {
 										 return d[0];
 									 })])
-									 .range([0, w]);
+									 .range([padding, w - padding * 2]);
 
 		var yScale = d3.scale.linear()
 									 .domain([0, d3.max(dataset, function(d) {
 										 return d[1];
 									 })])
-									 .range([0, h]);
+									 .range([h - padding, padding]);
+
+		var rScale = d3.scale.linear()
+								 .domain([0, d3.max(dataset, function(d) { return d[1]; })])
+								 .range([2, 5]);
+
 		// create svg
 		var svg = d3.select("body")
 									.append("svg")
 									.attr({
-										"width": w + 100,
-										"height": h + 100
+										"width": w,
+										"height": h
 									});
 
 // append data to screen.  Use scaling functions created above.
@@ -52,7 +59,7 @@
 						 return xScale(d[0]);
 					 },
 					 "r": function(d) {
-						 return Math.sqrt(h - d[1]);
+						 return rScale(d[1]);
 					 }
 				 });
 
