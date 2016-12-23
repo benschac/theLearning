@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
 		<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
 		<!--  endbower -->
-		
+
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -30,18 +30,9 @@
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
-        <li>
-          <a href="#">Category</a>
-        </li>
-        <li>
-          <a href="#">Category</a>
-        </li>
-        <li>
-          <a href="#">Category</a>
-        </li>
-        <li>
-          <a href="#">Category</a>
-        </li>
+        <% for(var i = 0; i < nav.length; i++){%>
+					<li><a href="<%= nav[i].Link%>"><%= nav[i].Text%></a></li>
+				<%}%>
       </ul>
       <ul class="nav navbar-right navbar-nav">
         <li class="dropdown">
