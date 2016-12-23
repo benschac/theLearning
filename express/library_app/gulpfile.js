@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const jshint = require('gulp-jshint');
 const jscs = require('gulp-jscs');
-const nodemon = require('nodemon');
+const nodemon = require('gulp-nodemon');
 
 const jsconfig = ['*.js', 'src/**/*.js'];
 
