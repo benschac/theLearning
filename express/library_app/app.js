@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const port = process.env.port || 5000;
-let bookRouter = express.Router();
+let bookRouter = require('./src/routes/bookRoutes.js');
+
 
 let books = [
   {
@@ -31,6 +32,7 @@ let books = [
 ];
 
 app.use(express.static('public'));
+app.use('/Books', bookRouter);
 app.set('views','src/views');
 app.set('view engine', 'ejs');
 
@@ -52,29 +54,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/Books', bookRouter);
-bookRouter.route('/')
-          .get((req, res) => {
-            res.render('books', {
-              title: 'Hello from Books!',
-              nav: [
-                {
-                  Link:'/Books',
-                  Text: 'Books'
-                },
-                {
-                  Link:'/Authors',
-                  Text: 'Authors'
-                }
-              ],
-              books: books
-            });
-          });
-
-bookRouter.route('/single')
-          .get((req, res) => {
-            res.send('Hello Books, nested single route!');
-          });
 
 app.listen(port, function() {
   console.log('Serving from port: ' + port);
